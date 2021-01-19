@@ -10,6 +10,7 @@ export default function StopWatch() {
   const [minutes, setMinutes] = useState(0);
   const [hours, setHours] = useState(0);
   const [time, setTime] = useState(0);
+
   useEffect(() => {
     setCentiseconds(0 + (Math.floor(timerTime / 10) % 100));
     setSeconds(
@@ -21,12 +22,10 @@ export default function StopWatch() {
 
   const startTimer = () => {
     setTimerOn(true);
-    setTimerTime(timerTime);
     setTimerStart(Date.now() - timerTime);
 
     setInterval(() => {
       setTimerTime(Date.now() - timerStart);
-      setTime(timerTime - timerStart);
     }, 10);
   };
   return (
